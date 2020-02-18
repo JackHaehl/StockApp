@@ -24,19 +24,6 @@ public class PerStockDataCalculator {
         double b = dataSet.get(1).getPrice();
         return ((a - b)/b) * 100;
     }
-    public double marketPerformanceRatio1(){
-        double stockChangePercent = (dataSet.get(dataSet.size() -1).getPrice() - dataSet.get(0).getPrice())/dataSet.get(dataSet.size() -1).getPrice() * 100;
-        return 0;
-    }
-    public double marketPerformanceRatio4(){
-        return 0;
-    }
-    public double marketPerformanceRatio12(){
-        return 0;
-    }
-    public double marketPerformanceRatio52(){
-        return 0;
-    }
     public double averageDailyPercentChange(){
         double a = 0;
         double b = 0;

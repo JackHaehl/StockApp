@@ -9,11 +9,10 @@ public class SimulationHandler {
     }
     public void constructSimulationData(){
         stockList.buildSimulationStockList(sY,sM);
-       // for(Stock stock : stockList.getStockList()){
-       //     stock.constructSimulationDataArray(sY,sM);
-       // }
+        for(Stock stock : stockList.getStockList()){
+            stock.constructSimulationDataArray(sY,sM);
+        }
     }
-
     public int getStartYear(){
         return sY;
     }

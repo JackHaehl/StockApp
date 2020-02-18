@@ -11,11 +11,11 @@ public class Main {
         String activeStock = "";
         boolean leaderboard = false;
         boolean simulation = false;
-        //if(!refresher.isRefreshed()){
-        //    System.out.println("Some data is missing! Refreshing statistics...");
-        //    refresher.refresh();
-        //    System.out.println("Complete!");
-        //}
+        if(!refresher.isRefreshed()){
+            System.out.println("Some data is missing! Refreshing statistics...");
+            refresher.refresh();
+            System.out.println("Complete!");
+        }
         Stock stock = new Stock("AAPL");
         System.out.println("Average Change: " + stock.averageChange());
         System.out.println("Weighted average change: " + stock.weightedAverageChange());

@@ -18,9 +18,10 @@ public class StockList {
         while(reader.hasNext()){
             viable = false;
             stock = new Stock(reader.next());
-            stock.constructSimulationDataArray(year,month);
-            if(stock.dataPoints.size() > 20){
-                viable = true;
+            for(PerStockDataPoint point : stock.dataPoints){
+                if(point.getYear() == year && point.getMonth() == month){
+                    viable = true;
+                }
             }
             if(viable) {
                 stock.constructSimulationDataArray(year,month);

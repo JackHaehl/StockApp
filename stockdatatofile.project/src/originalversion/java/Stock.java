@@ -41,12 +41,10 @@ public class Stock {
         }
         reader.reset();
     }
-
-    //Constructs a data array only starting from the specified year and month to the beginning of the stock's lifespan.
     public void constructSimulationDataArray(int startYear, int startMonth){
-        int doy,y,m,d;
+        int doy,y,m,d,points=0;
         double p,div,vol;
-        boolean passStart = false;
+        boolean passStart = false,passEnd = false;
         reader = new ReadFromFile("stocks\\full\\"+symbol+".txt");
         dataPoints = new ArrayList<PerStockDataPoint>();
         dataPoints.clear();
@@ -65,10 +63,16 @@ public class Stock {
             div = Double.parseDouble(reader.next());
             reader.next();
             vol = Double.parseDouble(reader.next());
-            if(!passStart && startYear == y && startMonth == m){
+            if(startYear == y && startMonth == m && !passStart){
                 passStart = true;
             }
-            if(passStart) {
+            if(passStart){
+                points++;
+            }
+            if(!passEnd && points >= 1250){
+                passEnd = true;
+            }
+            if(passStart && !passEnd) {
                 dataPoints.add(new PerStockDataPoint(doy, y, m, d, p, div, vol));
             }
         }
